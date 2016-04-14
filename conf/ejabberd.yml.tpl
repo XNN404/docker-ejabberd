@@ -75,7 +75,7 @@ listen:
     module: ejabberd_http
     request_handlers:
       "/websocket": ejabberd_http_ws
-      %{- if env['EJABBERD_MOD_HTTP_API'] == "true" %}
+      {%- if env['EJABBERD_MOD_HTTP_API'] == "true" %}
       "/api": mod_http_api
       {% endif %}
     ##  "/pub/archive": mod_http_fileserver
@@ -97,7 +97,7 @@ listen:
     certfile: "/opt/ejabberd/ssl/host.pem"
     {% endif %}
 
-%{- if env['ejabberd_mod_http_api'] == "true" %}
+{%- if env['EJABBERD_MOD_HTTP_API'] == "true" %}
 commands_admin_access: configure
 commands:
   add_commands:
