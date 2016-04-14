@@ -75,6 +75,9 @@ listen:
     module: ejabberd_http
     request_handlers:
       "/websocket": ejabberd_http_ws
+      %{- if env['EJABBERD_MOD_HTTP_API'] == "true" %}
+      "/api": mod_http_api
+      {% endif %}
     ##  "/pub/archive": mod_http_fileserver
     web_admin: true
     http_bind: true
@@ -94,11 +97,22 @@ listen:
     certfile: "/opt/ejabberd/ssl/host.pem"
     {% endif %}
 
+%{- if env['ejabberd_mod_http_api'] == "true" %}
+commands_admin_access: configure
+commands:
+  add_commands:
+    - status
+    - registered_users
+    - register
+    - unregister
+    - create_room
+    - destroy_room
+{% endif %}
 
-###   SERVER TO SERVER
+###   server to server
 ###   ================
 
-{%- if env['EJABBERD_S2S_SSL'] == "true" %}
+{%- if env['ejabberd_s2s_ssl'] == "true" %}
 s2s_use_starttls: required
 s2s_certfile: "/opt/ejabberd/ssl/host.pem"
 s2s_protocol_options:
