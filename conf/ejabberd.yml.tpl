@@ -97,7 +97,8 @@ listen:
     certfile: "/opt/ejabberd/ssl/host.pem"
     {% endif %}
 
-%{- if env['ejabberd_mod_http_api'] == "true" %}
+
+%{- if env['EJABBERD_MOD_HTTP_API'] == "true" %}
 commands_admin_access: configure
 commands:
   add_commands:
