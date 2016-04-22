@@ -242,11 +242,12 @@ acl:
 access:
   ## Maximum number of simultaneous sessions allowed for a single user:
   max_user_sessions:
+    admin: 1000000
     all: 10
   ## Maximum number of offline messages that users can have:
   max_user_offline_messages:
     admin: 5000
-    all: 100
+    all: 1000
   ## This rule allows access only for local users:
   local:
     local: allow
@@ -336,8 +337,21 @@ modules:
     access_persistent: muc_create
     access_admin: muc_admin
     history_size: 50
+    max_users: 1000000
+    max_users_presence: 1000
+    max_user_conferences: 1000000
     default_room_options:
+      public: true
       persistent: true
+      mam: true
+      allow_change_subj: false
+      allow_private_messages: false
+      allow_query_users: false
+      allow_user_invites: false
+      allow_visitor_nickchange: false
+      public_list: false
+      moderated: true
+
   {%- if env['EJABBERD_MOD_MUC_ADMIN'] == "true" %}
   mod_muc_admin: {}
   {% endif %}
