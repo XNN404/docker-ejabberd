@@ -273,7 +273,7 @@ access:
   muc_create:
     {%- if env['EJABBERD_MUC_CREATE_ADMIN_ONLY'] == "true" %}
     admin: allow
-    {% else %}
+    {%- else %}
     local: allow
     {% endif %}
   ## All users are allowed to use the MUC service:
