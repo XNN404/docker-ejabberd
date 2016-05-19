@@ -342,9 +342,9 @@ modules:
       mam: true
       allow_change_subj: false
       {%- if env['EJABBERD_MOD_MUC_ALLOW_PRIVATE_MESSAGES'] == "true" %}
-        allow_private_messages: true
+      allow_private_messages: true
       {- else %}
-        allow_private_messages: false
+      allow_private_messages: false
       {% endif %}
       allow_query_users: false
       allow_user_invites: false
