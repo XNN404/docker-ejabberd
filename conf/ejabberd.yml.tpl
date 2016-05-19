@@ -341,7 +341,7 @@ modules:
       persistent: true
       mam: true
       allow_change_subj: false
-      allow_private_messages: false
+      allow_private_messages: true
       allow_query_users: false
       allow_user_invites: false
       allow_visitor_nickchange: false
