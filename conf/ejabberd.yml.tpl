@@ -107,6 +107,13 @@ commands:
     - unregister
     - create_room
     - destroy_room
+    - check_password
+    - check_account
+    - check_password_hash
+    - change_room_option
+    - change_password
+    - connected_users
+
 {% endif %}
 
 ###   server to server
@@ -240,11 +247,12 @@ acl:
 access:
   ## Maximum number of simultaneous sessions allowed for a single user:
   max_user_sessions:
+    admin: 1000000
     all: 10
   ## Maximum number of offline messages that users can have:
   max_user_offline_messages:
     admin: 5000
-    all: 100
+    all: 1000
   ## This rule allows access only for local users:
   local:
     local: allow
@@ -272,7 +280,7 @@ access:
   muc_create:
     {%- if env['EJABBERD_MUC_CREATE_ADMIN_ONLY'] == "true" %}
     admin: allow
-    {% else %}
+    {%- else %}
     local: allow
     {% endif %}
   ## All users are allowed to use the MUC service:
@@ -332,8 +340,25 @@ modules:
     access_persistent: muc_create
     access_admin: muc_admin
     history_size: 50
+    max_users: 1000000
+    max_users_presence: 1000
+    max_user_conferences: 1000000
     default_room_options:
+      public: true
       persistent: true
+      mam: true
+      allow_change_subj: false
+      {%- if env['EJABBERD_MOD_MUC_ALLOW_PRIVATE_MESSAGES'] == "true" %}
+      allow_private_messages: true
+      {%- else %}
+      allow_private_messages: false
+      {% endif %}
+      allow_query_users: false
+      allow_user_invites: false
+      allow_visitor_nickchange: false
+      public_list: false
+      moderated: true
+
   {%- if env['EJABBERD_MOD_MUC_ADMIN'] == "true" %}
   mod_muc_admin: {}
   {% endif %}
