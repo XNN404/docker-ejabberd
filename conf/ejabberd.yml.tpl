@@ -107,6 +107,8 @@ commands:
     - unregister
     - create_room
     - destroy_room
+    - check_password
+    - check_account
 {% endif %}
 
 ###   server to server
