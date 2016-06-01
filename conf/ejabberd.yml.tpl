@@ -113,6 +113,8 @@ commands:
     - change_room_option
     - change_password
     - connected_users
+    - add_rosteritem
+    - delete_rosteritem
 
 {% endif %}
 
