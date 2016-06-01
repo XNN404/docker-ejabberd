@@ -109,9 +109,11 @@ commands:
     - destroy_room
     - check_password
     - check_account
+    - check_password_hash
     - change_room_option
     - change_password
     - connected_users
+
 {% endif %}
 
 ###   server to server
