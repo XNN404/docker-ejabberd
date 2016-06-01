@@ -1,0 +1,16 @@
+ejabberd:
+  build: .
+  ports:
+    - 5222:5222
+    - 5269:5269
+    - 5280:5280
+  environment:
+    - ERLANG_NODE=ejabberd
+    - XMPP_DOMAIN=example.com xyz.io localhost
+    - EJABBERD_ADMINS=admin@example.com
+    - EJABBERD_USERS=admin@example.com:password4321 user1@xyz.io user2@example.com:password stanza@example.com:password stanza2@example.com:password demo@example.com:vTxZCpJ3AdLn4YhV98KPC7QkVVe_UOHpvg-ysweaD_ZaX1WThwb_GoZ9BPsHwE8s-CxmHMH7QbPihwTktUDC5Q==
+    - EJABBERD_HTTPS=false
+    - EJABBERD_STARTTLS=false
+    - EJABBERD_AUTH_METHOD=internal
+    - EJABBERD_REGISTER_ADMIN_ONLY=true
+    - EJABBERD_MOD_HTTP_API=true
