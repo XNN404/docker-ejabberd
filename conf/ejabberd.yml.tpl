@@ -115,6 +115,7 @@ commands:
     - connected_users
     - add_rosteritem
     - delete_rosteritem
+    - get_roster
 
 {% endif %}
 
