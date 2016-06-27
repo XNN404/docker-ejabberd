@@ -76,7 +76,7 @@ listen:
     request_handlers:
       "/websocket": ejabberd_http_ws
       {%- if env['EJABBERD_MOD_HTTP_API'] == "true" %}
-      "/api": mod_http_api
+      "/xmpp_server/api": mod_http_api
       {% endif %}
     ##  "/pub/archive": mod_http_fileserver
     web_admin: true
@@ -343,8 +343,8 @@ modules:
     access_persistent: muc_create
     access_admin: muc_admin
     history_size: 50
-    max_users: 1000000
-    max_users_presence: 1000
+    max_users: 20000
+    max_users_presence: 20000
     max_user_conferences: 1000000
     default_room_options:
       public: true
@@ -361,6 +361,7 @@ modules:
       allow_visitor_nickchange: false
       public_list: false
       moderated: true
+      anonymous: true
 
   {%- if env['EJABBERD_MOD_MUC_ADMIN'] == "true" %}
   mod_muc_admin: {}
