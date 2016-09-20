@@ -76,7 +76,7 @@ listen:
     request_handlers:
       "/websocket": ejabberd_http_ws
       {%- if env['EJABBERD_MOD_HTTP_API'] == "true" %}
-      "/xmpp_server/api": mod_http_api
+      "/api": mod_http_api
       {% endif %}
     ##  "/pub/archive": mod_http_fileserver
     web_admin: true
