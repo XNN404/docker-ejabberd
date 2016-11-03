@@ -117,6 +117,7 @@ commands:
     - add_rosteritem
     - delete_rosteritem
     - get_roster
+    - set_presence
 
 {% endif %}
 
