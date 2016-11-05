@@ -317,6 +317,10 @@ language: "en"
 ###   MODULES
 
 modules:
+  mod_mam:
+    default: always
+    cache_size: 1000
+    cache_life_time: 3600
   mod_adhoc: {}
   {%- if env['EJABBERD_MOD_ADMIN_EXTRA'] == "true" %}
   mod_admin_extra: {}
