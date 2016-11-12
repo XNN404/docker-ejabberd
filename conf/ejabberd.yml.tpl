@@ -118,6 +118,7 @@ commands:
     - delete_rosteritem
     - get_roster
     - set_presence
+    - set_room_affiliation
 
 {% endif %}
 
