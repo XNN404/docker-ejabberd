@@ -319,6 +319,9 @@ language: "en"
 
 modules:
   mod_mam:
+    {%- if env['EJABBERD_MOD_MAM_IN_ODBC'] == "true" %}
+    db_type: odbc
+    {% endif %}
     default: always
     cache_size: 1000
     cache_life_time: 3600
