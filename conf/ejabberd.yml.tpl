@@ -319,8 +319,10 @@ language: "en"
 
 modules:
   mod_mam:
-    {%- if env['EJABBERD_MOD_MAM_IN_ODBC'] == "true" %}
-    db_type: odbc
+    {% if env['EJABBERD_USE_SQL_DB'] == "true" %}
+    db_type: sql
+    {% else %}
+    db_type: mnesia
     {% endif %}
     default: always
     cache_size: 1000
@@ -347,6 +349,11 @@ modules:
   ##   accesslog: "/var/log/ejabberd/access.log"
   mod_last: {}
   mod_muc:
+    {% if env['EJABBERD_USE_SQL_DB'] == "true" %}
+    db_type: sql
+    {% else %}
+    db_type: mnesia
+    {% endif %}
     host: "conference.@HOST@"
     access: muc
     access_create: muc_create
@@ -427,7 +434,12 @@ modules:
     {% endif %}
 
     access: register
-  mod_roster: {}
+  mod_roster:
+    {% if env['EJABBERD_USE_SQL_DB'] == "true" %}
+    db_type: sql
+    {% else %}
+    db_type: mnesia
+    {% endif %}
   mod_shared_roster: {}
   mod_stats: {}
   mod_time: {}
@@ -452,6 +464,13 @@ host_config:
 {%- for xmpp_domain in env['XMPP_DOMAIN'].split() %}
   "{{ xmpp_domain }}":
     domain_certfile: "/opt/ejabberd/ssl/{{ xmpp_domain }}.pem"
+    sql_type: pgsql
+    sql_server: "{{ env['SQL_SERVER'] }}"
+    sql_port: "{{ env['SQL_PORT'] }}"
+    sql_database: "{{ env['SQL_DATABASE'] }}"
+    sql_username: "{{ env['SQL_USERNAME'] }}"
+    sql_password: "{{ env['SQL_PASSWORD'] }}"
+    auth_method: [sql]
 {%- endfor %}
 
 {%- if env['EJABBERD_CONFIGURE_ODBC'] == "true" %}
