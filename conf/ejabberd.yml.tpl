@@ -348,8 +348,6 @@ modules:
   ##   docroot: "/var/www"
   ##   accesslog: "/var/log/ejabberd/access.log"
   mod_last: {}
-  mod_mam:
-    default: always
   mod_muc:
     {% if env['EJABBERD_USE_SQL_DB'] == "true" %}
     db_type: sql
