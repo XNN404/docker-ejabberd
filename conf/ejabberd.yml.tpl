@@ -260,7 +260,7 @@ access:
   ## Maximum number of offline messages that users can have:
   max_user_offline_messages:
     admin: 5000
-    all: 1000
+    all: {{ env.get('MAX_USER_OFFLINE_MESSAGES', 1000) }}
   ## This rule allows access only for local users:
   local:
     local: allow
