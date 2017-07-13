@@ -11,7 +11,7 @@ source "${EJABBERD_HOME}/scripts/lib/functions.sh"
 install_module_from_source() {
     local module_name=$1
     local module_source_path=${EJABBERD_HOME}/module_source/${module_name}
-    local module_install_folder=${EJABBERD_HOME}/.ejabberd-modules/sources/${module_name}
+    local module_install_folder=${EJABBERD_HOME}/.ejabberd-modules/sources
     
     echo "Analyzing module ${module_name} for installation"
     # Make sure that the module exists in the source folder before attempting a copy
@@ -31,6 +31,7 @@ install_module_from_source() {
 
     # Copy the module into the shared folder
     echo "Copying module to ejabberd folder ${module_install_folder}"
+    mkdir -p ${module_install_folder}
     cp -R ${module_source_path} ${module_install_folder}
 
     # Run the ejabberdctl module_check on the module
@@ -97,7 +98,7 @@ enable_custom_auth_module_override() {
     fi
 
     custom_auth_method=${module_name#$required_prefix}
-    echo "auth_method: [${custom_auth_method}]" >> ${CONFIGFILE}
+    echo -e "\nauth_method: [${custom_auth_method}]" >> ${CONFIGFILE}
     echo "Custom auth module ${module_name} configuration complete."
 }
 

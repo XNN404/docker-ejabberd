@@ -31,11 +31,16 @@
 
 # Introduction
 
-Dockerfile to build an [ejabberd](https://www.ejabberd.im/) container image.
+Dockerfile to build an [ejabberd][] container image.
+
+*Since version 16.12, ejabberd has it's own docker container based on the work of this container included in the source tree. See more [in this blogpost][]. We can expect more work on this in the future.*
+
+[ejabberd]: https://www.ejabberd.im/
+[in this blogpost]: https://blog.process-one.net/ejabberd-16-12/
 
 ## Version
 
-Current Version: `16.04`
+Current Version: `17.04`
 
 Docker Tag Names are based on ejabberd versions in git [branches][] and [tags][]. The image tag `:latest` is based on the master branch.
 
@@ -242,7 +247,7 @@ EJABBERD_USERS=admin@example.ninja:password1234 user1@test.com user1@xyz.io
 ```
 
 ## SSL
-
+- **EJABBERD_SKIP_MAKE_SSLCERT**: Skip generating ssl certificates. Default: false
 - **EJABBERD_SSLCERT_HOST**: SSL Certificate for the hostname.
 - **EJABBERD_SSLCERT_EXAMPLE_COM**: SSL Certificates for XMPP domains.
 - **EJABBERD_STARTTLS**: Set to `false` to disable StartTLS for client to server connections. Defaults
@@ -253,6 +258,7 @@ EJABBERD_USERS=admin@example.ninja:password1234 user1@test.com user1@xyz.io
 - **EJABBERD_PROTOCOL_OPTIONS_TLSV1_1**: Allow TLSv1.1 protocol. Defaults to `true`.
 - **EJABBERD_CIPHERS**: Cipher suite. Defaults to `HIGH:!aNULL:!3DES`.
 - **EJABBERD_DHPARAM**: Set to `true` to use or generate custom DH parameters. Defaults to `false`.
+- **EJABBERD_SKIP_MAKE_DHPARAM**: Skip generating DH params. Default: false
 
 ## Erlang
 
@@ -267,7 +273,10 @@ EJABBERD_USERS=admin@example.ninja:password1234 user1@test.com user1@xyz.io
 - **EJABBERD_MOD_ADMIN_EXTRA**: Activate the mod_muc_admin module. Defaults to `true`.
 - **EJABBERD_REGISTER_TRUSTED_NETWORK_ONLY**: Only allow user registration from the trusted_network access rule. Defaults to `true`.
 - **EJABBERD_MOD_VERSION**: Activate the mod_version module. Defaults to `true`.
-
+- **EJABBERD_SOURCE_MODULES**: List of modules, which will be installed from sources localized in ${EJABBERD_HOME}/module_source.
+- **EJABBERD_CONTRIB_MODULES**: List of modules, which will be installed from contrib repository.
+- **EJABBERD_RESTART_AFTER_MODULE_INSTALL**: If any modules were installed, restart the server, if the option is enabled.
+- **EJABBERD_CUSTOM_AUTH_MODULE_OVERRIDE**: If a custom module was defined for handling auth, we need to override the pre-defined auth methods in the config.
 ## Logging
 
 Use the **EJABBERD_LOGLEVEL** environment variable to set verbosity. Defaults to `4` (Info).

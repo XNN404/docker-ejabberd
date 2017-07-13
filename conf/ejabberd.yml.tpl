@@ -151,7 +151,7 @@ auth_method:
 {%- endfor %}
 
 {%- if 'anonymous' in env.get('EJABBERD_AUTH_METHOD', 'internal').split() %}
-anonymous_protocol: login_anon
+anonymous_protocol: both
 allow_multiple_connections: true
 {%- endif %}
 
@@ -337,7 +337,7 @@ modules:
   mod_caps: {}
   mod_carboncopy: {}
   mod_client_state:
-    drop_chat_states: true
+    queue_chat_states: true
     queue_presence: false
   mod_configure: {} # requires mod_adhoc
   mod_disco: {}
@@ -348,6 +348,8 @@ modules:
   ##   docroot: "/var/www"
   ##   accesslog: "/var/log/ejabberd/access.log"
   mod_last: {}
+  mod_mam:
+    default: always
   mod_muc:
     {% if env['EJABBERD_USE_SQL_DB'] == "true" %}
     db_type: sql
@@ -476,12 +478,13 @@ host_config:
 {%- if env['EJABBERD_CONFIGURE_ODBC'] == "true" %}
 ###   ====================
 ###   ODBC DATABASE CONFIG
-odbc_type: {{ env['EJABBERD_ODBC_TYPE'] }}
-odbc_server: {{ env['EJABBERD_ODBC_SERVER'] }}
-odbc_database: {{ env['EJABBERD_ODBC_DATABASE'] }}
-odbc_username: {{ env['EJABBERD_ODBC_USERNAME'] }}
-odbc_password: {{ env['EJABBERD_ODBC_PASSWORD'] }}
-odbc_pool_size: {{ env['EJABBERD_ODBC_POOL_SIZE'] }}
+sql_type: {{ env['EJABBERD_ODBC_TYPE'] }}
+sql_server: "{{ env['EJABBERD_ODBC_SERVER'] }}"
+sql_database: "{{ env['EJABBERD_ODBC_DATABASE'] }}"
+sql_username: "{{ env['EJABBERD_ODBC_USERNAME'] }}"
+sql_password: "{{ env['EJABBERD_ODBC_PASSWORD'] }}"
+
+default_db: sql
 {% endif %}
 
 {%- if env['EJABBERD_DEFAULT_DB'] is defined %}
