@@ -101,7 +101,7 @@ listen:
 {%- if env['EJABBERD_MOD_HTTP_API'] == "true" %}
 commands_admin_access: configure
 commands:
-  add_commands:
+  - add_commands:
     - status
     - registered_users
     - register
