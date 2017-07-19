@@ -363,7 +363,7 @@ modules:
     access_admin: muc_admin
     history_size: 50
     max_users: 20000
-    max_users_presence: 20000
+    max_users_presence: 20
     max_user_conferences: 1000000
     default_room_options:
       public: true
