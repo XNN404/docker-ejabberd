@@ -470,7 +470,7 @@ host_config:
     sql_database: "{{ env['SQL_DATABASE'] }}"
     sql_username: "{{ env['SQL_USERNAME'] }}"
     sql_password: "{{ env['SQL_PASSWORD'] }}"
-    auth_method: [sql]
+    auth_method: [{{ env.get('EJABBERD_AUTH_METHOD', 'internal') }}]
 {%- endfor %}
 
 {%- if env['EJABBERD_CONFIGURE_ODBC'] == "true" %}
