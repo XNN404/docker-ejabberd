@@ -37,6 +37,7 @@ RUN set -x \
         erlang-src erlang-dev \
         libgd-dev \
         libwebp-dev \
+        dnsutils \
     ' \
     && requiredAptPackages=' \
         wget \
