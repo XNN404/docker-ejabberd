@@ -362,10 +362,11 @@ modules:
     access_persistent: muc_create
     access_admin: muc_admin
     history_size: 50
-    max_users: 5000
+    max_users: 50000
     max_users_presence: 20
     max_user_conferences: 100
     default_room_options:
+      max_users: 5000
       public: true
       persistent: true
       mam: true
