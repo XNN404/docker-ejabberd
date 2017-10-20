@@ -36,6 +36,7 @@ RUN set -x \
         libyaml-dev \
         libsqlite3-dev \
         erlang-src erlang-dev \
+        dnsutils \
     ' \
     && requiredAptPackages=' \
         locales \
