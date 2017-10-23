@@ -119,6 +119,9 @@ commands:
     - get_roster
     - set_presence
     - set_room_affiliation
+    - list_cluster
+    - leave_cluster
+    - join_cluster
 
 {% endif %}
 
