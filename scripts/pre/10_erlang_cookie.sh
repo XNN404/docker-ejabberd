@@ -10,7 +10,7 @@ source "${EJABBERD_HOME}/scripts/lib/functions.sh"
 set_erlang_cookie() {
     echo "Set erlang cookie to ${ERLANG_COOKIE}..."
     echo ${ERLANG_COOKIE} > ${ERLANGCOOKIEFILE}
-    chmod 400 ${ERLANGCOOKIEFILE}
+    chmod 600 ${ERLANGCOOKIEFILE}
 }
 
 

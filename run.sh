@@ -20,6 +20,10 @@ if (is_true ${ERLANG_NODE}); then
     export ERLANG_NODE="ejabberd@${nodename}"
 fi
 
+if is_true "${ERLANG_NODE_USE_IP}"; then
+  export ERLANG_NODE="ejabberd@$(hostname -i)"
+  echo "Setting ERLANG_NODE from IP: ${ERLANG_NODE}"
+fi
 
 run_scripts() {
     local run_script_dir="${EJABBERD_HOME}/scripts/${1}"
