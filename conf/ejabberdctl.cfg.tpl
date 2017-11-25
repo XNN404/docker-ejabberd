@@ -36,7 +36,7 @@
 # Default: 32000
 # Maximum: 268435456
 #
-#ERL_MAX_PORTS=32000
+ERL_MAX_PORTS=320000
 
 #.
 #' FIREWALL_WINDOW: Range of allowed ports to pass through a firewall
@@ -88,7 +88,7 @@
 # Default: 250000
 # Maximum: 268435456
 #
-#ERL_PROCESSES=250000
+#ERL_PROCESSES=25000000
 
 #.
 #' ERL_MAX_ETS_TABLES: Maximum number of ETS and Mnesia tables
@@ -101,7 +101,7 @@
 #
 # Default: 1400
 #
-#ERL_MAX_ETS_TABLES=1400
+#ERL_MAX_ETS_TABLES=140000
 
 #.
 #' ERL_OPTIONS: Additional Erlang options

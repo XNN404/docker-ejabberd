@@ -330,7 +330,8 @@ modules:
     db_type: mnesia
     {% endif %}
     default: always
-    cache_size: 1000
+    use_cache: true
+    cache_size: 100000
     cache_life_time: 3600
   mod_adhoc: {}
   {%- if env['EJABBERD_MOD_ADMIN_EXTRA'] == "true" %}
@@ -368,6 +369,9 @@ modules:
     max_users: 50000
     max_users_presence: 20
     max_user_conferences: 100
+    use_cache: true
+    cache_size: 100000
+    cache_life_time: 3600
     default_room_options:
       max_users: 5000
       public: true
@@ -448,6 +452,9 @@ modules:
     {% else %}
     db_type: mnesia
     {% endif %}
+    use_cache: true
+    cache_size: 100000
+    cache_life_time: 3600
   mod_shared_roster: {}
   mod_stats: {}
   mod_time: {}
