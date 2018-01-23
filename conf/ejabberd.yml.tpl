@@ -36,6 +36,9 @@ hosts:
 ## route_subdomains: s2s
 
 
+websocket_ping_interval: 50
+websocket_timeout: 60
+
 ###   ===============
 ###   LISTENING PORTS
 
@@ -88,8 +91,6 @@ listen:
     tls: true
     certfile: "/opt/ejabberd/ssl/host.pem"
     {% endif %}
-    websocket_timeout: 3600
-    websocket_ping_interval: 60
   -
     port: 5443
     module: ejabberd_http
