@@ -371,12 +371,12 @@ modules:
     history_size: 50
     max_users: 50000
     max_users_presence: 20
-    max_user_conferences: 100
+    max_user_conferences: 100000
     use_cache: true
     cache_size: 100000
     cache_life_time: 3600
     default_room_options:
-      max_users: 5000
+      max_users: 10000
       public: true
       persistent: true
       mam: true
