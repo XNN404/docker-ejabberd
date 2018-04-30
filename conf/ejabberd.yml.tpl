@@ -404,7 +404,10 @@ modules:
   ## mod_pres_counter:
   ##   count: 5
   ##   interval: 60
-  mod_privacy: {}
+  mod_privacy:
+    use_cache: true
+    cache_size: 100000
+    cache_life_time: 3600
   mod_private: {}
   ## mod_proxy65: {}
   mod_pubsub:
