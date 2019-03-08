@@ -378,8 +378,8 @@ modules:
     default_room_options:
       max_users: 10000
       public: true
-      persistent: true
-      mam: true
+      persistent: false
+      mam: false
       allow_change_subj: false
       {%- if env['EJABBERD_MOD_MUC_ALLOW_PRIVATE_MESSAGES'] == "true" %}
       allow_private_messages: true
