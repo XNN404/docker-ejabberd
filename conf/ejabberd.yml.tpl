@@ -526,3 +526,4 @@ redis_db: {{ env['EJABBERD_REDIS_DB'] or 0}}
 redis_reconnect_timeout: {{ env['EJABBERD_REDIS_RECONNECT_TIMEOUT'] or 1 }}
 redis_connect_timeout: {{ env['EJABBERD_REDIS_CONNECT_TIMEOUT'] or 1 }}
 {% endif %}
+
